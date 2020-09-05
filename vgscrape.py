@@ -25,6 +25,11 @@ current_height= prev_height
 anchor_tags= driver.find_elements_by_tag_name('a')
 img_urls= []
 
+for tag in anchor_tags:
+    if "image" in tag.get_attribute("class"):
+        continue
+    img_urls.append(tag.get_attribute("href"))
+
 iu2 = np.array(img_urls)
 
 with open('outputFile.csv', 'w', newline='') as csvfile:
